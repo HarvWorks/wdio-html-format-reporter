@@ -213,14 +213,14 @@
                                               </tr>
                                             {{/each}}
 
-                                            <tr class="test-row">
-                                              {{#each test.logit as |output|}}
+                                            {{#each test.logit as |output|}}
+                                              <tr class="test-row">
                                                 <td colspan="2">
                                                   <pre class='log-output'>{{output}}</pre>
                                                 </td>
-                                              {{/each}}
-                                            </tr>
-
+                                              </tr>
+                                            {{/each}}
+                                            
                                           </table>
                                         </td><tr>
                                       {{/each}}
