@@ -166,17 +166,8 @@
               <table class="table table-bordered">
                 <tr>
                   <td colspan="2">
-
-                    {{!-- <h3>{{@key}}:</h3> --}}
                     {{#each runnerStat.specs as |specStat|}}
                      <table class="table table-bordered">
-<!--
-                      <tr><td>Spec Start</td><td>{{specStat.start}}</td></tr>
-                      <tr><td>Spec End</td><td>{{specStat.end}}</td></tr>
-                      <tr><td>Spec Duration</td><td>{{#humanizeDuration specStat._duration}}{{/humanizeDuration}}</td></tr>
- -->
-                      {{!-- <tr><td>Spec Files</td><td>{{specStat.files}}</td></tr> --}}
-
                         {{#each specStat.suites as |suiteStat|}}
                           {{#isValidSuite suiteStat}}
                             <table class="table table-bordered table-suite">
@@ -231,7 +222,7 @@
                                             {{/each}}
                                             
                                           </table>
-                                        </td><tr>
+                                        </td></tr>
                                       {{/each}}
                                     </table>
                                   </td>
@@ -240,10 +231,16 @@
                             </table>
                           {{/isValidSuite}}
                         {{/each}}
-
-   <!--                        </table>
-                        </td> -->
-                      </tr>
+                         <h3>Time for login</h3>
+                        <table class="table table-bordered logTime">
+                          <tr>
+                            {{#each specStat.logTimeHeader as |browserName|}}
+                              <td>{{browserName}}</td>
+                            {{/each}}
+                          </tr>
+                          {{#drawTableRows specStat}}{{/drawTableRows}}
+                        </table>
+                      </table>
                     {{/each}}
                   </td>
                 </tr>
