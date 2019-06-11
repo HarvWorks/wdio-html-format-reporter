@@ -45,6 +45,9 @@
       padding-top: 10px;
       border-color: #ECEFF1;
     }
+    .hide-table {
+      margin-bottom: 0;
+    }
 
     .step-table .step-name {
       text-align: left;
@@ -130,7 +133,17 @@
           <tr><td>Start</td><td>{{stats.start}}</td></tr>
           <tr><td>End</td><td>{{stats.end}}</td></tr>
           <tr><td>Duration</td><td>{{#humanizeDuration stats._duration}}{{/humanizeDuration}}</td></tr>
-          <tr><td>Breakdown</td><td>
+          <tr><td>Breakdown of Scenarios</td><td>
+            <table class="table table-bordered">
+              <tr>
+                <td class='test-pass'>Passes</td><td class='test-pending'>Pending</td><td class='test-fail'>Failures</td>
+              </tr>
+              <tr>
+                <td>{{stats.suiteResults.passing}}</td><td>{{stats.suiteResults.pending}}</td><td>{{stats.suiteResults.failing}}</td>
+              </tr>
+            </table>
+          </td></tr>
+          <tr><td>Breakdown of Steps</td><td>
             <table class="table table-bordered">
               <tr>
                 <td class='test-pass'>Passes</td><td class='test-pending'>Pending</td><td class='test-fail'>Failures</td>
@@ -148,10 +161,6 @@
           <td>
             <span class="filter toggleFailingTests"><span>Hide</span> Failing Tests</span>
             <span class="filter togglePassingTests"><span>Hide</span> Passing Tests</span>
-<!--
-            <span class="filter">Show/Hide Tests with screenshots</span>
-            <span class="filter">Show/Hide Tests with output</span>
- -->
           </td>
         </tr>
       </table>
@@ -167,7 +176,7 @@
                 <tr>
                   <td colspan="2">
                     {{#each runnerStat.specs as |specStat|}}
-                     <table class="table table-bordered">
+                     <table class="table table-bordered hide-table">
                         {{#each specStat.suites as |suiteStat|}}
                           {{#isValidSuite suiteStat}}
                             <table class="table table-bordered table-suite">
