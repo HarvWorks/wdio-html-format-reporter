@@ -244,7 +244,9 @@
                         <table class="table table-bordered logTime">
                           <tr>
                             {{#each specStat.logTimeHeader as |browserName|}}
-                              <td><b>{{browserName}}</b></td>
+                              {{#if browserName}}
+                                <td><b>{{browserName}}</b></td>
+                              {{/if}}
                             {{/each}}
                           </tr>
                           {{#drawTableRows specStat}}{{/drawTableRows}}
