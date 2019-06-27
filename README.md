@@ -1,5 +1,5 @@
 # wdio-html-format-reporter
-A reporter for webdriver.io which generates a HTML report.
+This is a heavily modified fork of the wdio-html-format-reporter, which allows webdriver.io to generate a HTML report.
 Based off the excellent [wdio-spec-reporter](https://www.npmjs.com/package/wdio-spec-reporter)
 
 ## Installation
@@ -9,7 +9,7 @@ The easiest way is to keep the `wdio-html-format-reporter` as a devDependency in
 ```javascript
 {
   "devDependencies": {
-    "wdio-html-format-reporter": "~0.2.7"
+    "wdio-html-format-reporter": "git+ssh://git@bitbucket.corporate.t-mobile.com/dig/ui-automation-html-reporter.git"
   }
 }
 ```
@@ -17,7 +17,7 @@ The easiest way is to keep the `wdio-html-format-reporter` as a devDependency in
 Or, you can simply do it with:
 
 ```
-npm install wdio-html-format-reporter --save-dev
+npm install git+ssh://git@bitbucket.corporate.t-mobile.com/dig/ui-automation-html-reporter.git --save-dev
 ```
 
 
@@ -31,11 +31,13 @@ module.exports = {
   reporters: ['spec', 'html-format'],
   reporterOptions: {
     htmlFormat: {
-      outputDir: './reports/'
+      outputDir: './reports/',
+      // optionally it can also have a custom report name that can be dynamically passed into this field.
+      reportName: 'this-report-is-name'
     },
   },
-  screenshotPath: `./screenShots`,     
-  // ...    
+  screenshotPath: `./screenShots`,
+  // ...
 };
 ```
 
