@@ -1,6 +1,21 @@
-# wdio-html-format-reporter
+# wdio-html-format-reporter <!-- omit in TOC -->
+
 This is a heavily modified fork of the wdio-html-format-reporter, which allows webdriver.io to generate a HTML report.
 Based off the excellent [wdio-spec-reporter](https://www.npmjs.com/package/wdio-spec-reporter)
+
+## Table of Contents <!-- omit in TOC -->
+
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Events](#events)
+  - [Screenshot](#screenshot)
+  - [Log messages](#log-messages)
+  - [Log accounts](#log-accounts)
+  - [Log Suite Number](#log-suite-number)
+  - [Log Login Time](#log-login-time)
+- [Example test](#example-test)
+- [Output](#output)
+- [TODO:](#todo)
 
 ## Installation
 
