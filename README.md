@@ -33,12 +33,108 @@ module.exports = {
     htmlFormat: {
       outputDir: './reports/',
       // optionally it can also have a custom report name that can be dynamically passed into this field.
-      reportName: 'this-report-is-name'
+      reportName: 'the-report-name'
     },
   },
   screenshotPath: `./screenShots`,
   // ...
 };
+```
+
+## Events
+
+### Screenshot
+
+```javascript
+browser.saveScreenshot(`${browser.options.screenshotPath}/screenshot-example.png`)
+
+// OR //
+
+process.send({
+    event: 'screenshot:fullpage',
+    filename: `${filepath}.png`
+})
+```
+
+### Log messages
+
+This will log messages to that step/test
+
+```javascript
+process.send({
+  event: 'runner:logit',
+  output: 'Do. Or do not. There is no try'
+})
+
+// OR //
+
+process.send({
+  event: 'runner:logit',
+  output: 'great plugin for fullscreen screenshots: https://www.npmjs.com/package/wdio-screenshot'
+})
+```
+
+### Log accounts
+
+This will log the accounts to that JSON object
+
+```javascript
+process.send({
+  event: 'runner:logAccounts',
+  accounts: {
+    "originatingUser": {
+      "email": "testing080@pizzacompany.biz",
+      "password": "hCNTSwrv8bxJ",
+      "accountType": "t-mobile",
+      "securityAnswer": "wyUXcLSxs3xs",
+      "displayName": "User Name080",
+      "workLine": "",
+      "extension": "9080",
+      "cwl": "12063340557",
+      "username": "testing080@pizzacompany.biz"
+    },
+    "receivingUser1": {
+      "email": "testing026@pizzacompany.biz",
+      "password": "hCNTSwrv8bxJ",
+      "accountType": "t-mobile",
+      "securityAnswer": "wyUXcLSxs3xs",
+      "displayName": "User Name026",
+      "workLine": "14254996423",
+      "extension": "9026",
+      "cwl": "",
+      "username": "testing026@pizzacompany.biz"
+    },
+    "receivingUser2": null,
+    "receivingUser3": null
+  }
+});
+```
+
+### Log Suite Number
+
+This will add how long it took to login to the login time table
+
+```javascript
+process.send({
+  event: 'runner:logtime',
+  output: {
+    logTime: "FAILED",
+    color: "#FFCDD2",
+    suiteNumber: 42,
+    browserName: `firstBrowser`
+  }
+});
+```
+
+### Log Login Time
+
+This will log the accounts to that JSON object
+
+```javascript
+process.send({
+  event: 'runner:logAccounts',
+  suiteNumber: 42
+});
 ```
 
 ## Example test
